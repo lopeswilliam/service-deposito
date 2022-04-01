@@ -36,28 +36,28 @@ public class DepositoController {
 
 	@ApiOperation(value = "Inclui Deposito")
 	@PostMapping(path = "/incluir" , produces = {"application/json"})
-	public ResponseEntity<Deposito> inclusao(@RequestBody DepositoRequest depositoRequest, @RequestParam("token") String token) {
+	public ResponseEntity<Deposito> inclusao(@RequestBody DepositoRequest depositoRequest, @RequestHeader("authorization") String authorization) {
 		logger.info("Iniciando a Inclusao do depositoService");
 		return depositoService.inclusao(depositoRequest );
 	}
 
 	@ApiOperation(value = "consulta Depositos")
 	@GetMapping(path = "/listarDepositos" , produces = {"application/json"})
-	public ResponseEntity<List<Deposito>> consultaDepositos(@RequestParam("token") String token) {
+	public ResponseEntity<List<Deposito>> consultaDepositos(@RequestHeader("authorization") String authorization) {
 		logger.info("Iniciando a consulta do depositoService");
 		return depositoService.listarDepositos();
 	}
 	
 	@ApiOperation(value = "Atualizar Depositos")
 	@PutMapping(path = "/atualizar" , produces = {"application/json"})
-	public ResponseEntity<Deposito> atualizar(@RequestBody DepositoRequest depositoRequest, @RequestParam("token") String token) {
+	public ResponseEntity<Deposito> atualizar(@RequestBody DepositoRequest depositoRequest, @RequestHeader("authorization") String authorization) {
 		logger.info("Iniciando a Inclusao do depositoService");
 		return depositoService.atualizar(depositoRequest );
 	}
 	
 	@ApiOperation(value = "Consultar Depositos")
 	@GetMapping(path = "/consultar" , produces = {"application/json"})
-	public ResponseEntity<List<Deposito>> consulta(@RequestParam("cnpj") String cnpj, @RequestParam("token") String token) {
+	public ResponseEntity<List<Deposito>> consulta(@RequestParam("cnpj") String cnpj, @RequestHeader("authorization") String authorization) {
 		logger.info("Iniciando a consulta do depositoService");
 		return depositoService.consultar(cnpj);
 	}
